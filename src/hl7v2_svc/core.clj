@@ -2,7 +2,8 @@
   (:require
    [ring.adapter.jetty :as jetty]
    [ring.logger.timbre :as timbre]
-   [taoensso.timbre :as log])
+   [taoensso.timbre :as log]
+   [hl7v2-svc.config.core :as cfg])
   (:gen-class))
 
 (defonce server (atom nil))
@@ -16,7 +17,7 @@
   (timbre/wrap-with-logger handler))
 
 (defn start! []
-  (let [port 8080]
+  (let [port (:port @cfg/config)]
     (log/info "starting server...")
     (reset! server
             (jetty/run-jetty #'app
