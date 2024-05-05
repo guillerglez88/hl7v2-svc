@@ -1,4 +1,6 @@
-(ns hl7v2-svc.routes)
+(ns hl7v2-svc.routes
+  (:require
+   [hl7v2-svc.inspect.core :as insp]))
 
 (defn root [_req]
   {:status 200
@@ -7,8 +9,8 @@
 
 (defn post-message [req]
   {:status 200
-   :body (:body-params req)})
+   :body (insp/introspecton (:body-params req))})
 
 (def routes
-  [["/"         {:get {:handler root}}]
-   ["/Message"  {:post {:handler post-message}}]])
+  [["/"                 {:get {:handler root}}]
+   ["/Introspection"    {:post {:handler post-message}}]])
