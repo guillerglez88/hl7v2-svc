@@ -1,4 +1,4 @@
-(ns hl7v2-svc.coerce.core
+(ns hl7v2-svc.api.introspection
   (:require
    [hl7v2.core :as hl7]
    [clojure.java.io :as io]
@@ -12,14 +12,7 @@
             :encoding enc
             :tokens (hl7/tokenize (io/reader er7) enc)})))
 
-(defn message [msg]
-  (merge msg
-         {:status "complete"
-          :data (hl7/parse (b64-dec (get-in msg [:content :data])))}))
-
 (comment
   (introspecton (read-string (slurp "test/data/introsp-3912D187.edn")))
-
-  (message (read-string (slurp "test/data/introsp-3912D187.edn")))
 
   :.)

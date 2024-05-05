@@ -1,0 +1,34 @@
+{:kind "Structure",
+ :status "draft",
+ :url "https://www.hl7.org/V251/ORU_R01",
+ :description "ORU_R01 trigger event",
+ :template
+ [:ORU_R01 {:version "2.5.1"}
+  [:MSH]
+  [:SFT]
+  [:PATIENT-RESULTS
+   [:PATIENT
+    [:PID]
+    [:PD1]
+    [:NTE]
+    [:NK1]
+    [:VISIT
+     [:PV1]
+     [:PV2]]]
+   [:ORDER-OBSERVATION
+    [:ORC]
+    [:OBR]
+    [:NTE]
+    [:TIMING-QTY
+     [:TQ1]
+     [:TQ2]]
+    [:CTD]
+    [:OBSERVATION
+     [:OBX]
+     [:NTE]]
+    [:FT1]
+    [:CTI]
+    [:SPECIMEN
+     [:SPM]
+     [:OBX]]]]
+  [:DSC]]}
